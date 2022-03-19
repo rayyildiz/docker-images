@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [ main ]
 
-defaults:
-  run:
-    working-directory: ca-certificates
-
 jobs:
 
   build:
@@ -31,7 +27,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
-        context: .
-        file: ./Dockerfile
+        context: ./ca-certificates
+        file: ./ca-certificates/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ca-certificates:latest

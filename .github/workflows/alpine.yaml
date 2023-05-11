@@ -34,9 +34,9 @@ jobs:
         file: ./alpine/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/alpine:latest
-        outputs: type=oci,dest=/tmp/image.tar
   
     - name: Scan for vulnerabilities
       uses: crazy-max/ghaction-container-scan@v2
       with:
-        tarball: /tmp/image.tar
+        image: ${{ secrets.DOCKER_HUB_USERNAME }}/alpine:latest
+        severity_threshold: HIGH

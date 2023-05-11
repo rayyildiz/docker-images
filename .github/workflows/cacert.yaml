@@ -36,9 +36,9 @@ jobs:
         file: ./ca-certificates/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ca-certificates:latest
-        outputs: type=oci,dest=/tmp/image.tar
     
     - name: Scan for vulnerabilities
       uses: crazy-max/ghaction-container-scan@v2
       with:
-        tarball: /tmp/image.tar
+        image: ${{ secrets.DOCKER_HUB_USERNAME }}/ca-certificates:latest
+        severity_threshold: HIGH

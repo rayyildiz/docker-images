@@ -2,9 +2,11 @@ name: alpine
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: 
+      - main
+    paths:
+      - alpine/**
+      - .github/workflows/alpine.yaml
   schedule:
     - cron:  '10 0 * * 0'
 jobs:
@@ -32,3 +34,9 @@ jobs:
         file: ./alpine/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/alpine:latest
+        outputs: type=oci,dest=/tmp/image.tar
+  
+    - name: Scan for vulnerabilities
+      uses: crazy-max/ghaction-container-scan@v2
+      with:
+        tarball: /tmp/image.tar

@@ -1,8 +1,7 @@
 Alpine Linux
 ===
 
-[![https://images.microbadger.com/badges/image/rayyildiz/alpine.svg](https://microbadger.com/images/rayyildiz/alpine "Alpine Linux")
-
+[![alpine](https://github.com/rayyildiz/docker-images/actions/workflows/alpine.yaml/badge.svg)](https://github.com/rayyildiz/docker-images/actions/workflows/alpine.yaml)
 
 Base image based on Alpine linux
 
